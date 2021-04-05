@@ -25,9 +25,11 @@ function computerPlay() {
   function game() {
     console.log("ROCK PAPER SCISSORS GAME");
     for (var i = 0; i < 5; i ++) {
-      let playerSelection = promt("Enter your move (Rock, Paper or Scissors): ");
+      let playerSelection = prompt("Enter your move (Rock, Paper or Scissors): ");
       let computerSelection = computerPlay();
+      console.log("Computer move is " + computerSelection + ".");
       console.log(singleRoundResult(computerSelection, playerSelection));
+      console.log("----------");
     }
   }
   game();
