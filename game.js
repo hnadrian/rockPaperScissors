@@ -1,9 +1,32 @@
+function main() {
+  console.log("ROCK PAPER SCISSORS GAME");
+  for (var i = 0; i < 5; i ++) {
+    let playerSelection = prompt("Enter your move (Rock, Paper or Scissors): ");
+    let computerSelection = computerPlay();
+    console.log("Computer move is " + computerSelection + ".");
+    console.log(singleRoundResult(computerSelection, playerSelection));
+    console.log("----------");
+  }
+
+  const container = document.querySelector("#choices");
+
+  const rockButton = document.querySelector("#rockButton");
+  const paperButton = document.querySelector("#paperButton");
+  const scissorsButton = document.querySelector("#scissorsButton");
+
+  const userMoveButtons = document.querySelectorAll()
+
+
+
+
+}
+
 function computerPlay() {
     var moves = ["Rock", "Paper", "Scissors"];
     return moves[Math.floor(Math.random() * moves.length)];
   }
 
-  function singleRoundResult(computerSelection, playerSelection) {
+function singleRoundResult(computerSelection, playerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     let result = "No result.";
@@ -20,16 +43,12 @@ function computerPlay() {
       else if (playerSelection === "rock") result = "You win! Rock beat Scissors.";
     }
     return result;
-  }
+}
 
-  function game() {
-    console.log("ROCK PAPER SCISSORS GAME");
-    for (var i = 0; i < 5; i ++) {
-      let playerSelection = prompt("Enter your move (Rock, Paper or Scissors): ");
-      let computerSelection = computerPlay();
-      console.log("Computer move is " + computerSelection + ".");
-      console.log(singleRoundResult(computerSelection, playerSelection));
-      console.log("----------");
-    }
-  }
-  game();
+function playRound() {
+
+}
+
+
+
+main();
