@@ -1,30 +1,5 @@
-function main() {
-  console.log("ROCK PAPER SCISSORS GAME");
-  for (var i = 0; i < 5; i ++) {
-    let playerSelection = prompt("Enter your move (Rock, Paper or Scissors): ");
-    let computerSelection = computerPlay();
-    console.log("Computer move is " + computerSelection + ".");
-    console.log(singleRoundResult(computerSelection, playerSelection));
-    console.log("----------");
-  }
-
-  const container = document.querySelector("#choices");
-
-  const rockButton = document.querySelector("#rockButton");
-  const paperButton = document.querySelector("#paperButton");
-  const scissorsButton = document.querySelector("#scissorsButton");
-
-  const userMoveButtons = document.querySelectorAll()
-
-
-
-
-}
-
-function computerPlay() {
-    var moves = ["Rock", "Paper", "Scissors"];
-    return moves[Math.floor(Math.random() * moves.length)];
-  }
+let userScore = 0;
+let comScore = 0;
 
 function singleRoundResult(computerSelection, playerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -45,10 +20,50 @@ function singleRoundResult(computerSelection, playerSelection) {
     return result;
 }
 
-function playRound() {
-
+function playRound(e) {
+  const computerSelection = computerPlay();
+  let result = singleRoundResult(computerSelection, e.target.id);
+  computerResult.textContent = "Computer move is: " + computerSelection;
+  displayResult.textContent = result;
+  if (result.startsWith("You win")) {
+    userScore++;
+  } else if (result.startsWith("You lose")) {
+    comScore++;
+  }
+  scoreResult.textContent = `${userScore}-${comScore}`;
+  if (userScore === 5) {
+    winnerResult.textContent = "YOU ARE THE WINNER!";
+    delayedReset();
+  } else if (comScore === 5) {
+    winnerResult.textContent = "THE COMPUTER IS THE WINNER!";
+    delayedReset();
+  }
 }
 
+function computerPlay() {
+  var moves = ["Rock", "Paper", "Scissors"];
+  return moves[Math.floor(Math.random() * moves.length)];
+}
 
+function reset() {
+  userScore = 0;
+  comScore = 0;
+  computerResult.textContent = "Computer move is:";
+  scoreResult.textContent = "0-0";
+  displayResult.textContent = "";
+  winnerResult.textContent = "";
+}
 
-main();
+function delayedReset() {
+  setTimeout(reset, 2500);
+}
+
+const container = document.querySelector("#choices");
+const displayResult = document.querySelector("#game-result");
+const computerResult = document.querySelector("#computer-result");
+const scoreResult = document.querySelector("#score-result");
+const winnerResult = document.querySelector("#winner-result");
+const userButtons = document.querySelectorAll(".player-move");
+userButtons.forEach(button => button.addEventListener("click", playRound));
+const resetButton = document.querySelector("#reset-button");
+resetButton.addEventListener("click", reset);

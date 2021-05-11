@@ -4,13 +4,20 @@
   <title>ROCK PAPER SCISSORS</title>
   <meta charset="UTF-8"/>
   <link rel="stylesheet" href="style.css">
-  <script src ="game.js" async></script>
 </head>
 <body>
   <div class="choices">
-    <img id="rockButton" src="resources/rock.png">
-    <img id="paperButton" src="resources/paper.png">
-    <img id="scissorsButton" src="resources/scissors.png">
+    <img class="player-move" id="rock" src="resources/rock.png">
+    <img class="player-move" id="paper" src="resources/paper.png">
+    <img class="player-move" id="scissors" src="resources/scissors.png">
   </div>
+  <div class="display">
+    <p class="result" id="computer-result">Computer move is:</p>
+    <p class="result" id="game-result"></p>
+    <p class="result" id="score-result">0-0</p>
+    <p class="result" id="winner-result"></p>
+    <button id="reset-button">Reset Game</button>
+  </div>
+  <script src="game.js"></script>
 </body>
 </html>
